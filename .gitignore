@@ -1,0 +1,26 @@
+# 데이터 / 모델 (런타임에 생성 또는 다운로드; 커밋 안 함)
+data/ccsn/
+data/ccsn.zip
+data/captures/
+data/capture_log.csv
+models/*.pt
+models/training_history.json
+
+# 파이썬
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# 구식/가짜 파일 (레포에서 제외)
+build_notebook.py
+generate_assets.py
+out.txt
+# 노트북이 실데이터/실추론으로 대체한 가짜 자산 (도메인 분포 fallback 만 남김)
+assets/feature_maps.png
+assets/training_curve.png
+assets/timeseries_weather.png
+
+# OS
+Thumbs.db
+.DS_Store
+_verify.ipynb
