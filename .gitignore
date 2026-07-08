@@ -1,7 +1,6 @@
-# 데이터 / 모델 (런타임에 생성 또는 다운로드; 커밋 안 함)
+# 런타임에 다운로드/생성/학습되는 것은 제외. 사진(data/captures)은 커밋.
 data/ccsn/
 data/ccsn.zip
-data/captures/
 data/capture_log.csv
 models/*.pt
 models/training_history.json
