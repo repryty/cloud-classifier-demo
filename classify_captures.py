@@ -120,9 +120,16 @@ def main():
         transforms.Normalize(IMAGENET_MEAN, IMAGENET_STD),
     ])
 
+    CAP_DIR.mkdir(parents=True, exist_ok=True)
     files = sorted(CAP_DIR.glob("*.jpg"))
     if not files:
-        raise RuntimeError(f"캡처 이미지가 없습니다: {CAP_DIR}")
+        # 캡처가 없으면 빈 로그(헤더만) 작성하고 종료. downstream 셀이 안 죽게.
+        pd.DataFrame(columns=["timestamp", "file", "brightness", "rb", "edge",
+                               "kind", "kind_ko", "confidence", "weather"]
+                      ).to_csv(LOG_CSV, index=False, encoding="utf-8-sig")
+        print(f"[classify] 캡처 이미지가 없습니다: {CAP_DIR}")
+        print("        하늘 사진(.jpg)을 data/captures/ 에 넣고 다시 실행하세요.")
+        return
     print(f"[classify] 분석 대상: {len(files)} 장")
 
     rows = []
